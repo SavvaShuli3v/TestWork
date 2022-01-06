@@ -30,6 +30,21 @@ final class MenuCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setMenuPosition(with model: MenuModel) {
+        mainImageView.image = model.image
+        mainLabel.text = model.name
+        aboutLabel.text = model.about
+        setPrice(with: model.minPrice)
+    }
+    
+    func setIndexPath(with indexPath: Int) {
+        guard indexPath == 0 else {
+            roundCorners(.nothing, radius: 0)
+            return
+        }
+        roundCorners(.top, radius: 30)
+    }
+    
     private func setLayoutForViews() {
         mainImageView.translatesAutoresizingMaskIntoConstraints = false
         mainImageView.leading(16)
@@ -59,6 +74,10 @@ final class MenuCell: UICollectionViewCell {
         lineView.leading()
         lineView.trailing()
         lineView.height(1)
+    }
+    
+    private func setPrice<T: Comparable>(with price: T) {
+        priceLabel.text = "от \(price) р"
     }
 }
 

@@ -23,6 +23,9 @@ final class MainNewsCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        collectionView.frame = bounds
+        collectionView.frame = CGRect(
+            origin: CGPoint(x: 0, y: 0),
+            size: CGSize(width: bounds.width, height: 113)
+        )
     }
 }

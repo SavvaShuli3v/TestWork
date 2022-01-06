@@ -18,8 +18,8 @@ enum AppColors {
     static let gray: UIColor = .rgba(170, 170, 173)
     static let lightGray: UIColor = .rgba(243, 245, 249)
     static let pink: UIColor = .rgba(253, 58, 105)
-    
+    static let maxLightPink: UIColor = .rgba(253, 58, 105, 0.2)
+    static let lightPink: UIColor = .rgba(253, 58, 105, 0.4)
     static let white: UIColor = .rgba(255, 255, 255)
-    
-    static let lightPurple: UIColor = .rgba(98, 98, 220)
+
 }

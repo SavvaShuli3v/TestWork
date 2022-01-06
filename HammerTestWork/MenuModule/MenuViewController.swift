@@ -11,8 +11,7 @@ final class MenuViewController: UIViewController {
     private let output: MenuViewOutput
     
     private lazy var menuHeader = MenuHeader()
-    //private lazy var menuTableView = MenuTableView()
-    private lazy var menuTableView = MenuCollectionView()
+    private lazy var menuCollectionView = MenuCollectionView()
     
     init(output: MenuViewOutput) {
         self.output = output
@@ -25,9 +24,10 @@ final class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.viewDidLoad()
         view.backgroundColor = AppColors.lightGray
         view.addSubview(menuHeader)
-        view.addSubview(menuTableView)
+        view.addSubview(menuCollectionView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -38,14 +38,16 @@ final class MenuViewController: UIViewController {
         )
         
         
-        menuTableView.frame = CGRect(
+        menuCollectionView.frame = CGRect(
             origin: CGPoint(x: 0, y: view.safeAreaInsets.top + headerHeight),
             size: CGSize(width: view.bounds.width, height: view.bounds.height - headerHeight))
     }
 }
 
 extension MenuViewController: MenuViewInput {
-    
+    func setData(with menu: [MenuModel]) {
+        menuCollectionView.setMenu(menu: menu)
+    }
 }
 
 private let headerHeight: CGFloat = 56
