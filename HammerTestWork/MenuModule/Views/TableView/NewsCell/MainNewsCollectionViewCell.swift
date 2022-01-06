@@ -1,5 +1,5 @@
 //
-//  NewsTableViewCell.swift
+//  MainNewsCollectionViewCell.swift
 //  HammerTestWork
 //
 //  Created by Савва Шулятьев on 06.01.2022.
@@ -7,14 +7,13 @@
 
 import UIKit
 
-final class NewsTableViewCell: UITableViewCell {
+final class MainNewsCollectionViewCell: UICollectionViewCell {
     
     private lazy var collectionView = NewsCollectionView()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = AppColors.lightGray
-        selectionStyle = .none
         contentView.addSubview(collectionView)
     }
     

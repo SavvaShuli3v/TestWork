@@ -1,5 +1,5 @@
 //
-//  MainMenuCell.swift
+//  MenuCell.swift
 //  HammerTestWork
 //
 //  Created by Савва Шулятьев on 06.01.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainMenuCell: UITableViewCell {
+final class MenuCell: UICollectionViewCell {
     
     private lazy var mainImageView = makeImageView()
     private lazy var mainLabel = makeMainLabel()
@@ -15,10 +15,9 @@ final class MainMenuCell: UITableViewCell {
     private lazy var priceLabel = makePriceLabel()
     private lazy var lineView = makeLine()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = AppColors.white
-        selectionStyle = .none
         addSubview(mainImageView)
         addSubview(mainLabel)
         addSubview(aboutLabel)

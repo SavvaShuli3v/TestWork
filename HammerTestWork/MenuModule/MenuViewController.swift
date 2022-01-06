@@ -11,7 +11,8 @@ final class MenuViewController: UIViewController {
     private let output: MenuViewOutput
     
     private lazy var menuHeader = MenuHeader()
-    private lazy var menuTableView = MenuTableView()
+    //private lazy var menuTableView = MenuTableView()
+    private lazy var menuTableView = MenuCollectionView()
     
     init(output: MenuViewOutput) {
         self.output = output
