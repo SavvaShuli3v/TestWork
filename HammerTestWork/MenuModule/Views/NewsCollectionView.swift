@@ -1,8 +1,12 @@
 //
-//  NewsScrollView.swift
+//  NewsCollectionView.swift
 //  HammerTestWork
 //
 //  Created by Савва Шулятьев on 06.01.2022.
 //
 
-import Foundation
+import UIKit
+
+final class NewsScrollView: UICollectionView {
+    
+}
