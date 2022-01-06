@@ -8,5 +8,5 @@
 import Foundation
 
 enum Localization {
-
+    static let moscow = "Москва"
 }
