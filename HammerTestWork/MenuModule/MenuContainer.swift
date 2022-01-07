@@ -11,7 +11,8 @@ final class MenuContainer {
     var viewController: UIViewController
     
     class func assembly() -> MenuContainer {
-        let presenter = MenuPresenter()
+        let networkService = NetworkService()
+        let presenter = MenuPresenter(networkService: networkService)
         let viewController = MenuViewController(output: presenter)
         
         presenter.view = viewController

@@ -20,6 +20,7 @@
 		4DAB34FF27877A6C00EA8353 /* CACornerMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB34FE27877A6C00EA8353 /* CACornerMask.swift */; };
 		4DAB3501278795F300EA8353 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB3500278795F300EA8353 /* MenuModel.swift */; };
 		4DAB35032787B03800EA8353 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB35022787B03800EA8353 /* String + Extension.swift */; };
+		4DAB35062787B57600EA8353 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB35052787B57600EA8353 /* NetworkService.swift */; };
 		4DE1614E2786F6FC00ACEFE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1614D2786F6FC00ACEFE8 /* AppDelegate.swift */; };
 		4DE161572786F6FE00ACEFE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE161562786F6FE00ACEFE8 /* Assets.xcassets */; };
 		4DE1615A2786F6FE00ACEFE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE161582786F6FE00ACEFE8 /* LaunchScreen.storyboard */; };
@@ -49,6 +50,7 @@
 		4DAB34FE27877A6C00EA8353 /* CACornerMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACornerMask.swift; sourceTree = "<group>"; };
 		4DAB3500278795F300EA8353 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		4DAB35022787B03800EA8353 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		4DAB35052787B57600EA8353 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4DE1614A2786F6FC00ACEFE8 /* HammerTestWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HammerTestWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE1614D2786F6FC00ACEFE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DE161562786F6FE00ACEFE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 			path = SectionsHeader;
 			sourceTree = "<group>";
 		};
+		4DAB35042787B56200EA8353 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4DAB35052787B57600EA8353 /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		4DE161412786F6FC00ACEFE8 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 				4DE1614D2786F6FC00ACEFE8 /* AppDelegate.swift */,
 				4DE1616C2786FA3400ACEFE8 /* Coordinator */,
 				4DE161652786F87A00ACEFE8 /* MenuModule */,
+				4DAB35042787B56200EA8353 /* Services */,
 				4DE161702786FB4200ACEFE8 /* Extensions */,
 				4DE1616F2786FB3A00ACEFE8 /* Helpers */,
 				4DE161562786F6FE00ACEFE8 /* Assets.xcassets */,
@@ -282,6 +293,7 @@
 				4DAB35032787B03800EA8353 /* String + Extension.swift in Sources */,
 				4DE1616E2786FA4900ACEFE8 /* AppCoordinator.swift in Sources */,
 				4DE1617A2786FCF000ACEFE8 /* Localization.swift in Sources */,
+				4DAB35062787B57600EA8353 /* NetworkService.swift in Sources */,
 				4DE1616B2786F8BB00ACEFE8 /* MenuContainer.swift in Sources */,
 				4DE161762786FCC600ACEFE8 /* UIView + extension.swift in Sources */,
 				4DAB34FB27876C8000EA8353 /* SectionsCollectionView.swift in Sources */,

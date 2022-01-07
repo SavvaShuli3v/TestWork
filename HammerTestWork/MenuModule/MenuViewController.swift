@@ -40,7 +40,11 @@ final class MenuViewController: UIViewController {
         
         menuCollectionView.frame = CGRect(
             origin: CGPoint(x: 0, y: view.safeAreaInsets.top + headerHeight),
-            size: CGSize(width: view.bounds.width, height: view.bounds.height - headerHeight))
+            size: CGSize(
+                width: view.bounds.width,
+                height: view.bounds.height - headerHeight
+            )
+        )
     }
 }
 

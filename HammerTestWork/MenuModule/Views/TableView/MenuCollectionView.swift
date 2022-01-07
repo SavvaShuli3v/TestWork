@@ -115,7 +115,8 @@ extension MenuCollectionView: UICollectionViewDelegateFlowLayout {
         let header = dequeueReusableSupplementaryView(
             ofKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: headerID,
-            for: indexPath)
+            for: indexPath) as! SectionsCollectioonViewHeader
+        header.answerDelegate = self
         return header
     }
     
@@ -128,6 +129,23 @@ extension MenuCollectionView: UICollectionViewDelegateFlowLayout {
         default:
             preconditionFailure()
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        weak var header = (self.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(row: 0, section: 1)) as! SectionsCollectioonViewHeader)
+        if scrollView.contentOffset.y > 165 {
+            let alpha = (scrollView.contentOffset.y - 165) / 10
+            header?.shadowActive(with: alpha)
+        } else {
+            header?.shadowActive(with: 0)
+        }
+    }
+}
+
+extension MenuCollectionView: SectionsCollectioonViewHeaderProtocol {
+    func didTapToCell(with indexPath: IndexPath) {
+        let itemPosition = IndexPath(row: indexPath.row * 10, section: 1)
+        scrollToItem(at: itemPosition, at: .centeredVertically, animated: true)
     }
 }
 

@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol SectionsCollectionViewProtocol: AnyObject {
+    func didTapToCell(with indexPath: IndexPath)
+}
+
 final class SectionsCollectionView: UICollectionView {
+    weak var answerDelegate: SectionsCollectionViewProtocol?
     private var previousActiveContext = IndexPath(item: 0, section: 0)
     
     // MARK: - Init
@@ -47,7 +52,6 @@ extension SectionsCollectionView: UICollectionViewDataSource {
         } else {
             cell.removePreviousContext()
         }
-        
         return cell
     }
     
@@ -77,6 +81,7 @@ extension SectionsCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        answerDelegate?.didTapToCell(with: indexPath)
         
         if previousActiveContext != indexPath {
             weak var cell = cellForItem(at: indexPath) as? SectionCollectionViewCell
