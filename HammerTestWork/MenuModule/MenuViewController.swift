@@ -12,6 +12,7 @@ final class MenuViewController: UIViewController {
     
     private lazy var menuHeader = MenuHeader()
     private lazy var menuCollectionView = MenuCollectionView()
+    private lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     
     init(output: MenuViewOutput) {
         self.output = output
@@ -24,10 +25,13 @@ final class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        output.viewDidLoad()
         view.backgroundColor = AppColors.lightGray
         view.addSubview(menuHeader)
         view.addSubview(menuCollectionView)
+        setActivityIndicator()
+        activityIndicator.startAnimating()
+        menuCollectionView.alpha = 0
+        output.viewDidLoad()
     }
     
     override func viewWillLayoutSubviews() {
@@ -50,7 +54,20 @@ final class MenuViewController: UIViewController {
 
 extension MenuViewController: MenuViewInput {
     func setData(with menu: [MenuModel]) {
+        activityIndicator.stopAnimating()
+        menuCollectionView.alpha = 1
         menuCollectionView.setMenu(menu: menu)
+    }
+}
+
+private extension MenuViewController {
+    func setActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.width(10)
+        activityIndicator.height(10)
     }
 }
 

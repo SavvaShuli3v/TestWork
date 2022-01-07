@@ -28,7 +28,7 @@ final class MenuPresenter {
 
 extension MenuPresenter: MenuViewOutput {
     func viewDidLoad() {
-        networkService.getData { [weak self] result in
+        networkService.getMOCData { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let menu):

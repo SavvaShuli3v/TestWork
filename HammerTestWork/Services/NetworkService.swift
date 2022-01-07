@@ -8,28 +8,72 @@
 import UIKit
 
 protocol NetworkServiceProtocol {
-    func getData(completion: @escaping (Result<[MenuModel], Error>) -> Void)
+    func getMOCData(completion: @escaping (Result<[MenuModel], Error>) -> Void)
+    func getCoctail(completion: @escaping (Result<SimpleModel, Error>) -> Void)
+    func getImage(from urlString: String, completion: @escaping (Result<UIImage?, Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
-    func getData(completion: @escaping (Result<[MenuModel], Error>) -> Void) {
+    func getMOCData(completion: @escaping (Result<[MenuModel], Error>) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+            for i in 0..<50 {
+                menu.append(MenuModel(name: "\(i + 10)", about: "", minPrice: 345 + i, image: nil))
+            }
+            completion(.success(menu))
+        })
+    }
+    
+    func getCoctail(completion: @escaping (Result<SimpleModel, Error>) -> Void) {
+        //let tocken = Tocken.tockenString
+        let URLString = ""
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        for i in 0..<50 {
-            menu.append(MenuModel(name: "\(i + 10)", about: "", minPrice: 345 + i, image: nil))
+        guard let url = URL(string: URLString) else {
+            completion(.failure(CustomError.invalidURL))
+            return
         }
-        completion(.success(menu))
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+            }
+            
+            if let data = data,
+               (response as? HTTPURLResponse)?.statusCode == 200 {
+                
+                do {
+                    let model = try JSONDecoder().decode(SimpleModel.self, from: data)
+                    completion(.success(model))
+                } catch {
+                    completion(.failure(error))
+                    print("JSON pasrsing error: " + error.localizedDescription)
+                }
+            } else {
+                completion(.failure(CustomError.unexpectedError))
+            }
+        }
+        dataTask.resume()
+    }
+    
+    func getImage(from urlString: String, completion: @escaping (Result<UIImage?, Error>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        getData(from: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+            }
+            guard let data = data else { return }
+            completion(.success(UIImage(data: data)))
+        }
+
+    }
+    
+}
+
+private extension NetworkServiceProtocol {
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
 
@@ -86,4 +130,7 @@ private var menu = [
         image: UIImage.init(named: "pizza"))
 ]
 
-
+enum CustomError: Error {
+    case invalidURL
+    case unexpectedError
+}
